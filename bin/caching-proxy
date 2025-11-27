@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+// console.log("CLI tool working!");
+
+import {parseArgs} from "../src/args.js"
+import { clearCache } from "../src/cache.js";
+import { startServer } from "../src/server.js";
+
+
+const array= parseArgs(process.argv.slice(2));
+
+if(array["clear-cache"]){
+  clearCache();
+  process.exit(0);
+}
+
+if(!array.port || !array.origin){
+  console.log("Usage: caching-proxy --port <num> --origin <url>");
+  process.exit(0);
+}
+
+startServer(array.port,array.origin)
