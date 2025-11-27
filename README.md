@@ -1,36 +1,41 @@
-# Caching Proxy CLI
+Project Structure:
 
-A simple CLI tool that starts a caching proxy server.  
-It forwards requests to an origin server and caches responses.
-
-## 🚀 Install
-
-Clone the repo and run:
-
-
-This creates the global command `caching-proxy`.
-
----
-
-## 🧪 Usage
-
-Start proxy:
-
-caching-proxy --port 8080 --origin https://dummyjson.com
+caching-proxy/
+│
+├── bin/
+│   └── caching-proxy     # CLI executable file
+│
+├── src/
+│   ├── args.js           # Parses CLI arguments
+│   ├── cache.js          # In-memory cache logic
+│   └── server.js         # Core proxy server
+│
+├── package.json
+└── README.md
 
 
-Now visit:
+Installation
+
+Clone the repository:
+
+  git clone https://github.com/<your-username>/caching-proxy
+  cd caching-proxy
+  npm install
+
+#Link the CLI tool globally:
+
+  npm link
 
 
-### Response Header:
+# Now the command caching-proxy will work anywhere on your system.
 
-- `X-Cache: MISS` → first time
-- `X-Cache: HIT` → cached
+🚀 Usage
+#Start the proxy server
+  caching-proxy --port 8080 --origin https://dummyjson.com
 
----
-https://roadmap.sh/projects/caching-server
-## 🧹 Clear cache
+👨‍💻 Technologies Used
 
-caching-proxy --clear-cache
-
-
+  Node.js (http module)
+  ES Modules
+  node-fetch
+  CLI argument parsing using custom logic
